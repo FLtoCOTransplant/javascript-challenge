@@ -41,4 +41,15 @@ btnSearch.on("click", () => {
 
     // Now load the new data
 	if(tableData_Filtered.length !== 0) {
-		loadTableRows(tableData_Filtered);
+        loadTableRows(tableData_Filtered);
+    
+	}
+	else {
+		// Clear previous HTML:
+		tablebody.html("");
+		
+		// Tell them "No rows match"
+		tablebody.append("tr").append("td").text("There are no UFOs and never will be");
+	}
+})        
+        
