@@ -32,3 +32,6 @@ loadTableRows(tableData);
 btnSearch.on("click", () => {
 	// don't refresh on events
 	d3.event.preventDefault();
+
+    // Search for the date entered
+    var searchedDate = searchDate.property("value");
