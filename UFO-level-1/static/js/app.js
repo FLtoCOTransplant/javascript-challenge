@@ -35,3 +35,10 @@ btnSearch.on("click", () => {
 
     // Search for the date entered
     var searchedDate = searchDate.property("value");
+
+    // Take the data and filter it
+    var tableData_Filtered = tableData.filter(tableData => tableData.datetime === searchedDate);
+
+    // Now load the new data
+	if(tableData_Filtered.length !== 0) {
+		loadTableRows(tableData_Filtered);
