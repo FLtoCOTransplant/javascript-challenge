@@ -17,10 +17,18 @@ var loadTableRows = (xData) => {
 	// Delete the previously loaded table rows (if there were any)
     tablebody.html("");
 	
-	// Loop through "whichData" and add new table row for each row 
-	whichData.forEach(dataRow => { var tblRow = tbody.append("tr");  
+	// Loop through tableData and add a new row for each new sighting
+	tableData.forEach(dataRow => { var tableRow = tablebody.append("tr");  
 		
-		// Loop through each column and add it as a new table cell
-		tblColumns.forEach(column => tblRow.append("td").text(dataRow[column]))
+		// Loop through each column and add a new table cell where appropriate
+		tableColumn.forEach(column => tableRow.append("td").text(dataRow[column]))
 	});
 }
+
+// call the function
+loadTableRows(tableData);
+
+// what happens when someone searches for an event
+btnSearch.on("click", () => {
+	// don't refresh on events
+	d3.event.preventDefault();
