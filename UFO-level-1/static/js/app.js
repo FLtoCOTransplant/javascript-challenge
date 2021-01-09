@@ -52,4 +52,11 @@ btnSearch.on("click", () => {
 		tablebody.append("tr").append("td").text("There are no UFOs and never will be");
 	}
 })        
-        
+
+// Need to reset the button 
+buttonReset.on("click", () => {
+	document.getElementById("searchDate").value='';
+	
+	// Reset original table
+	loadTableRows(tableData);
+})
