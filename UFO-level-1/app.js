@@ -1,5 +1,6 @@
 // from data.js
 var tableData = data;
+console.log(tableData);
 
 // YOUR CODE HERE!
 
@@ -7,28 +8,28 @@ var tableData = data;
 var tableColumns = ["datetime", "city", "state", "country", "shape", "durationMinutes", "comments"]
 
 // Create HTML object references
-var tablebody = d3.select("tablebody");
-var searchDate = d3.select("#searchDate");
-var buttonSearch = d3.select("#btnSearch");
-var buttonReset = d3.select("#btnReset");
+var tbody = d3.select("tbody");
+var searchDate = d3.select("#datetime");
+var btnSearch = d3.select("#filter-btn");
 
 // Define a function that builds the table
 var loadTableRows = (xData) => { 
-    tablebody.html("");
+	// Delete the previously loaded table rows (if there were any)
+    tbody.html("");
 	
 	// Loop through tableData and add a new row for each new sighting
-	tableData.forEach(dataRow => { var tableRow = tablebody.append("tr");  
+	xData.forEach(dataRow => { var tableRow = tbody.append("tr");  
 		
 		// Loop through each column and add a new table cell where appropriate
-		tableColumn.forEach(column => tableRow.append("td").text(dataRow[column]))
+		tableColumns.forEach(column => tableRow.append("td").text(dataRow[column]))
 	});
 }
 
-// load the table
+// call the function
 loadTableRows(tableData);
 
 // what happens when someone searches for an event
-buttonSearch.on("click", () => {
+btnSearch.on("click", () => {
 	// don't refresh on events
 	d3.event.preventDefault();
 
@@ -45,10 +46,10 @@ buttonSearch.on("click", () => {
 	}
 	else {
 		// Clear previous HTML:
-		tablebody.html("");
+		tbody.html("");
 		
-		// let them know "good luck..."
-		tablebody.append("tr").append("td").text("There are no UFOs and never will be");
+		// Give them the bad news...
+		tbody.append("tr").append("td").text("There are no UFOs and never will be");
 	}
 })        
 
