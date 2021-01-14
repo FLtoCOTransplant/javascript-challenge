@@ -9,8 +9,8 @@ var tableColumns = ["datetime", "city", "state", "country", "shape", "durationMi
 
 // Create HTML object references
 var tbody = d3.select("tbody");
-var searchDate = d3.select("#datetime");
-var btnSearch = d3.select("#filter-btn");
+var searchDate = d3.select("datetime");
+var btnSearch = d3.select("filter-btn");
 
 // Define a function that builds the table
 var loadTableRows = (xData) => { 
