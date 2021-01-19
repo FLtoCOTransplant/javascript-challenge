@@ -2,8 +2,6 @@
 var tableData = data;
 console.log(tableData);
 
-// YOUR CODE HERE!
-
 // Create a variable for the table columns
 var tableColumns = ["datetime", "city", "state", "country", "shape", "durationMinutes", "comments"]
 
@@ -13,7 +11,6 @@ tabledata = data
 // Create HTML object references
 var tbody = d3.select("tbody");
 var searchDate = d3.select("datetime");
-// var btnSearch = d3.select("filter-btn");
 
 // Define a function that builds the table
 function loadTableRows(xData) { 
@@ -29,48 +26,28 @@ function loadTableRows(xData) {
 }
 
 // call the function
-loadTableRows(tableData);
+tablebuilder(tableData);
 
 // what happens when someone searches for an event
-// btnSearch.on("click", () => {
 function handleClick () {
 	// don't refresh on events
-	d3.event.preventDefault();
+	// d3.event.preventDefault();
 
     // Search for the date entered
-    var searchedDate = searchDate.property("value");
+    var searchedDate = d3.select("#datetime").property("value");
 
     // Take the data and filter it
-    var tableData_Filtered = tableData.filter(tableData => tableData.datetime === searchedDate);
-
-    // Now load the new data
-	//if(tableData_Filtered.length !== 0) {
-    //    loadTableRows(tableData_Filtered);
-    
-	//}
-	//else {
-		// Clear previous HTML:
-	//	tbody.html("");
-		
-		// Give them the bad news...
-	//	tbody.append("tr").append("td").text("There are no UFOs and never will be");
-	//}
-	var sdate = d3.select("#datetime").property("value")
-	if (sdate) {
+	var tableData_original = tableData
+	//.filter(tableData => tableData.datetime === searchedDate);
+	
+	// var sdate = d3.select("#datetime").property("value")
+	if (searchedDate) {
 		// Apply `filter` to the table data to only keep the
 		// rows where the `datetime` value matches the filter value
-		var filteredData = filteredData.filter(row => row.datetime === sdate);
+		var filterData = tableData_original.filter(row => row.datetime === searchedDate);
 	  }
-	  loadTableRows(filteredData)
+	  tablebuilder(filterData)
 }        
 
 // Need to reset the button 
-// buttonReset.on("click", () => {
 	d3.selectAll("#filter-btn").on("click", handleClick);
-	
-
-	
-	// document.getElementById("searchDate").value='';
-	
-	// Reset original table
-	// loadTableRows(tableData);
