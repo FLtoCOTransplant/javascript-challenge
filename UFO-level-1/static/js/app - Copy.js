@@ -18,10 +18,15 @@ function loadTableRows(xData) {
     tbody.html("");
 	
 	// Loop through tableData and add a new row for each new sighting
-	xData.forEach(dataRow => { var tableRow = tbody.append("tr");  
+	xData.forEach((dataRow) => { var tableRow = tbody.append("tr"); 
+	
+		Object.values(dataRow).forEach((value) => {
+		var cell = row.append('td');
+		cell.text(value);
+		})
 		
 		// Loop through each column and add a new table cell where appropriate
-		tableColumns.forEach(column => tableRow.append("td").text(dataRow[column]))
+		//tableColumns.forEach(column => tableRow.append("td").text(dataRow[column]))
 	});
 }
 
