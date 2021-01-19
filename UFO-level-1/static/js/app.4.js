@@ -3,14 +3,14 @@ var tableData = data;
 console.log(tableData);
 
 // Create a variable for the table columns
-var tableColumns = ["datetime", "city", "state", "country", "shape", "durationMinutes", "comments"]
+// var tableColumns = ["datetime", "city", "state", "country", "shape", "durationMinutes", "comments"]
 
 // Calling the variable data in the 'data.js'
-tabledata = data
+// tabledata = data
 
 // Create HTML object references
 var tbody = d3.select("tbody");
-var searchDate = d3.select("datetime");
+// var searchDate = d3.select("datetime");
 
 // Define a function that builds the table
 function loadTableRows(xData) { 
@@ -31,7 +31,7 @@ function loadTableRows(xData) {
 }
 
 // call the function
-tablebuilder(tableData);
+loadTableRows(tableData);
 
 // what happens when someone searches for an event
 function handleClick () {

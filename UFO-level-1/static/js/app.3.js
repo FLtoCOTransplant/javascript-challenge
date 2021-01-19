@@ -32,7 +32,7 @@ function loadTableRows(xData) {
 loadTableRows(tableData);
 
 // what happens when someone searches for an event
-function buttonClick () {
+function handleClick () {
 	// don't refresh on events
 	// d3.event.preventDefault();
 
@@ -47,10 +47,10 @@ function buttonClick () {
 	if (searchedDate) {
 		// Apply `filter` to the table data to only keep the
 		// rows where the `datetime` value matches the filter value
-		var filterData = tableData_original.filter(row => row.datetime === searchedDate)
+		var filterData = tableData_original.filter(row => row.datetime === searchedDate);
 	  }
-	  loadTableRows(filterData);
+	  tablebuilder(filterData)
 }        
 
 // Need to reset the button 
-	d3.selectAll("#filter-btn").on("click", buttonClick);
+	d3.selectAll("#filter-btn").on("click", handleClick);
