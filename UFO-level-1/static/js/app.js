@@ -27,24 +27,18 @@ loadTableRows(tableData);
 
 // what happens when someone searches for an event
 function buttonClick(){
-	// don't refresh on events
-	// d3.event.preventDefault();
 
     // Search for the date entered
     var searchedDate = d3.select("#datetime").property("value");
 
     // Take the data and filter it
 	var filteredData = tableData
-	//.filter(tableData => tableData.datetime === searchedDate);
 	
 	// var sdate = d3.select("#datetime").property("value")
 	if (searchedDate) {
-		console.log ("Searched Date",searchedDate, tableData)
 		// Apply `filter` to the table data to only keep the
 		// rows where the `datetime` value matches the filter value
-		var filteredData = filteredData.filter(row => row.datetime === searchedDate)
-		console.log ("filtered data", filteredData)
-	  }
+		var filteredData = filteredData.filter(row => row.datetime === searchedDate)}
 	  loadTableRows(filteredData);
 }        
 
