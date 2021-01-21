@@ -34,16 +34,18 @@ function buttonClick(){
     var searchedDate = d3.select("#datetime").property("value");
 
     // Take the data and filter it
-	var tableData_original = tableData
+	var filteredData = tableData
 	//.filter(tableData => tableData.datetime === searchedDate);
 	
 	// var sdate = d3.select("#datetime").property("value")
 	if (searchedDate) {
+		console.log ("Searched Date",searchedDate, tableData)
 		// Apply `filter` to the table data to only keep the
 		// rows where the `datetime` value matches the filter value
-		var filterData = tableData_original.filter(row => row.datetime === searchedDate)
+		var filteredData = filteredData.filter(row => row.datetime === searchedDate)
+		console.log ("filtered data", filteredData)
 	  }
-	  loadTableRows(filterData);
+	  loadTableRows(filteredData);
 }        
 
 // Need to reset the button 
